@@ -1,8 +1,8 @@
-# import os and write csv path
 import os
 import csv
+from collections import Counter
 
-path = os.path.join("election_data_2.csv")
+path = os.path.join("election_data.csv")
 
 with open(path, newline='') as csvfile:
     csvreader = csv.reader(csvfile, delimiter=',')
@@ -30,27 +30,21 @@ with open(path, newline='') as csvfile:
 
     print("Election Results")
     print("----------------------------------------")
-    print(f"The total number of votes was {tot_vote}")
+    print(f"The total number of votes was {totalvote}")
     print("----------------------------------------")
 
     dictionarycan = {}
-    cancount = 0
+    can_count = 0
     for row in can_names:
         candidate_name = str(can_names[can_count])
         votes = candidates.count(candidate_name)
         votes = int(votes)
-        percentage = round(votes / tot_vote * 100, 2)
-        dictionary_can.update({candidate_name: votes})
+        percentage = round(votes / totalvote * 100, 2)
+        dictionarycan.update({candidate_name: votes})
         print(f"{candidate_name}: {percentage}%  ({votes} votes)")
         can_count = can_count + 1
 
-    winner = max(dictionary_can, key=lambda key: dictionary_can[key])
+    winner = max(dictionarycan, key=lambda key: dictionarycan[key])
 
     print("Winner: ", winner)
-
-
-
-
-
-
 
