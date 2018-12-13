@@ -1,8 +1,8 @@
-# import os and write csv path
 import os
 import csv
+import statistics
 
-path = ("budget_data_1.csv")
+path = ("budget_data.csv")
 
 with open(path, newline='') as csvfile:
     csvreader = csv.reader(csvfile, delimiter=',')
@@ -27,7 +27,7 @@ with open(path, newline='') as csvfile:
     # variables
     max_change = max(revchange)
     big_loss = min(revchange)
-    avg_change = mean(revchange)
+    avg_change = statistics.mean(revchange)
     total_month = len(dates)
     max_month = None
     loss_month = None
